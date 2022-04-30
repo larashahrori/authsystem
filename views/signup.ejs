@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page </title>
+    <!-- here comes styling -->
+
+    <style>
+        ::placeholder {
+            color: black;
+            opacity: 1;
+        }
+        
+      
+        
+        html {
+            background: #f1d8f0;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        body {
+            padding-top: 10vh;
+        }
+        
+        .container {
+            background: #3c3c42;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            height: 465px;
+            width: 350px;
+            box-shadow: -3px -2px 6px #6c6565, 7px 9px 25px #0b0b0b;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        input {
+            height: 30px;
+            border: 2px solid #e1dede69;
+            border-radius: 5px;
+            background: #777272;
+            color: black;
+            text-align: center;
+            outline: none;
+            font-size: 15px;
+        }
+        
+        .form-item-username {
+            margin: 5px;
+            display: flex;
+            padding-bottom: 10px;
+        }
+        
+        .form-item-username input {
+            width: 150px;
+            margin: 0 5px;
+        }
+        
+        .form-item {
+            margin: 0 auto;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+        }
+        
+        .form-item input {
+            margin: 5px;
+            width: 100%;
+        }
+        
+        .accept-box {
+            display: flex;
+            align-items: center;
+            margin: auto;
+            font-size: 15px;
+        }
+        
+        a {
+            color: white;
+        }
+        
+        a:hover {
+            color: grey
+        }
+        
+        .form-btns {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+        }
+        
+        .form-btns button {
+            margin: auto;
+            font-size: 20px;
+            padding: 8px;
+            width: 280px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: rgb(75, 61, 61);
+            background: #fbba50;
+        }
+        
+        .form-btns button:disabled {
+            cursor: not-allowed;
+            background: #8f8b85 !important;
+            color: rgb(131, 120, 120) !important;
+        }
+        
+        .form-btns button:hover {
+            background: #d88a0c;
+            color: antiquewhite;
+        }
+        
+        .options {
+            padding-top: 15px;
+            margin: auto;
+            font-size: 13px;
+        }
+        
+        p {
+            font-size: 12px;
+        }
+        
+        .pwd-format {
+            position: relative;
+            color: rgb(65, 62, 62);
+            background: rgb(243, 234, 243);
+            font-size: 11px;
+            width: 150px;
+            padding: 5px;
+            border-radius: 5px;
+            top: 112px;
+            right: -81px;
+            z-index: 2;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+
+        <form action="" method="post">
+            <div class="form-item-username">
+                <input type="text" name="firstname" id="firstName" placeholder="First Name">
+                <input type="text" name="lastname" id="lastName" placeholder="Last Name">
+            </div>
+
+            <div class="form-item">
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="form-item">
+              <input type="username" name="username" id="username" placeholder="username">
+            </div>
+            <div class="form-item">
+                <!-- add a password format display -->
+                <span class="pwd-format">
+                    8-15 AlphaNumeric Characters
+                </span>
+                <input type="password" name="password" id="password" placeholder="Enter password">
+                <input type="password" name="confirm" id="confirmPassword" placeholder="Confirm password">
+            </div>
+
+            <div class="accept-box">
+                <input type="checkbox" name="accept" id="accept">
+                <p>I accept the <a href="#">Terms & Conditions</a></p>
+            </div>
+
+            <div class="form-btns">
+                <button class="signup" type="submit" disabled>Sign Up</button>
+                <div class="options">
+                    Already hav an account? <a href="#">Login here</a>
+                </div>
+            </div>
+
+        </form>
+        <p>Copyright &copy; yourwebsite.com</p>
+    </div>
+
+    <!-- Here Comes the javascript part -->
+
+    <script>
+        const signup = document.querySelector(".signup");
+        const termCond = document.querySelector("#accept");
+        const password = document.querySelector("#password");
+        const confirmPassword = document.querySelector("#confirmPassword");
+        const pwd_format = document.querySelector(".pwd-format");
+        // lets define a password format
+        // The password should contain around 8-15 alhpanumeric character
+
+        const passwordPattern = /^[a-zA-Z0-9]{8,15}$/
+
+        password.addEventListener('focusin', () => {
+            pwd_format.style.display = 'block';
+
+            // now lets check the password entered by the user
+            password.addEventListener('keyup', () => {
+                if (passwordPattern.test(password.value)) {
+                    password.style.borderColor = 'green' // if password pattern matches the border of password input will ne green
+                    pwd_format.style.color = 'green'
+                } else {
+                    password.style.borderColor = 'red'
+                    pwd_format.style.color = 'red'
+                }
+            })
+        })
+
+        password.addEventListener('focusout', () => {
+            pwd_format.style.display = 'none';
+        })
+
+        confirmPassword.addEventListener('focusin', () => {
+            pwd_format.style.display = 'block';
+            confirmPassword.addEventListener('keyup', () => {
+                if (passwordPattern.test(confirmPassword.value) && password.value === confirmPassword.value) {
+                    confirmPassword.style.borderColor = 'green' // if password pattern matches the border of password input will ne green
+                    pwd_format.style.color = 'green'
+                } else {
+                    confirmPassword.style.borderColor = 'red'
+                    pwd_format.style.color = 'red'
+                }
+            })
+        })
+
+        confirmPassword.addEventListener('focusout', () => {
+            pwd_format.style.display = 'none';
+        })
+
+        termCond.addEventListener('change', () => {
+            if (termCond.checked === true) {
+                signup.disabled = false;
+            } else if (termCond.checked === false) {
+                signup.disabled = true;
+            }
+        })
+    </script>
+
+</body>
+
+</html>

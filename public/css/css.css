@@ -1,0 +1,33 @@
+body{
+
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background: url('../photos/12.pg.jpg');
+    background-size: cover;
+}
+
+form{
+    margin-left: 150px;
+    margin-top: 200px;
+
+
+}
+h2{
+position: absolute;
+top: 15%;
+font-weight: bold;
+font-style: oblique;
+
+}
+form{
+width: 450px;
+height: 350px;
+background-color: rgba(218, 207, 207, 0.5);
+}
+.image{
+   position: absolute;
+   left: 70%;
+   bottom: 10%;
+
+}
