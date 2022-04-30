@@ -8,7 +8,7 @@ const db= require('../model');
 var app = express();
 
 var store = new MongoDBStore({
-    uri: 'mongodb+srv://web2:12345@cluster0.pdc3w.mongodb.net',
+    uri: 'mongodb+srv://lara:12345@cluster0.vrwsu.mongodb.net',
     collection: 'mySessions'
 });
 

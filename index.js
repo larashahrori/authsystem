@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')))
 
-mongoose.connect('mongodb+srv://web2:12345@cluster0.pdc3w.mongodb.net/users?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://lara:12345@cluster0.vrwsu.mongodb.net/users?retryWrites=true&w=majority',
     {useNewUrlParser:true},()=>{
     console.log("connected to db");
 })
