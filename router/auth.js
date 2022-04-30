@@ -6,7 +6,6 @@ const authcontroler=require('../controler/authcontroler');
 var MongoDBStore = require('connect-mongodb-session')(session);
 const db= require('../model');
 var app = express();
-
 var store = new MongoDBStore({
     uri: 'mongodb+srv://lara:12345@cluster0.vrwsu.mongodb.net',
     collection: 'mySessions'
